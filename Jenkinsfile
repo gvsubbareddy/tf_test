@@ -9,6 +9,14 @@ pipeline {
 			 
 			 }
 		 }
+		  agent {
+                         dockerfile {
+                         //additionalBuildArgs "--build-arg 'http_proxy=${env.http_proxy}' --build-arg 'https_proxy=${env.https_proxy}'"
+                         additionalBuildArgs "--build-arg 'TAG=tmp' --build-arg 'AWS_ACCESS_KEY_ID=test1' --build-arg 'AWS_SECRET_ACCESS_KEY=test2'"
+                         filename 'Dockerfile'
+                         args '-u root:root'
+                        }
+                   }
 		 //stage('Set Terraform path') {
 		//	 steps {
 		//		 script {
@@ -19,18 +27,18 @@ pipeline {
 		//	 }
 		 //}
 		 
-		 stage('Provision infrastructure') {
-			 steps {
-				 dir('dev')
-				 {
-				 sh 'cp ./../test.tf .'
-			         sh 'cp ./../Dockerfile .'
-				 sh 'docker build -t subbu/tf-test --build-arg TAG=tmp --build-arg AWS_ACCESS_KEY_ID=test1 --build-arg AWS_SECRET_ACCESS_KEY=test2 .'
+		// stage('Provision infrastructure') {
+		//	 steps {
+		//		 dir('dev')
+		//		 {
+		//		 sh 'cp ./../test.tf .'
+		//	         sh 'cp ./../Dockerfile .'
+		//		 sh 'docker build -t subbu/tf-test --build-arg TAG=tmp --build-arg AWS_ACCESS_KEY_ID=test1 --build-arg AWS_SECRET_ACCESS_KEY=test2 .'
 				 //sh 'terraform plan -out=plan'
 				 // sh ‘terraform destroy -auto-approve'
 				 //sh 'terraform apply plan'
-				 }
-			 }
-		 }
+		//		 }
+		//	 }
+		// }
 	 }
 }
