@@ -9,25 +9,26 @@ pipeline {
 			 
 			 }
 		 }
-		 stage('Set Terraform path') {
-			 steps {
-				 script {
-				 def tfHome = tool name: 'Terraform'
-				 env.PATH = "${tfHome}:${env.PATH}"
-				 }
-				sh 'terraform -version'
-			 }
-		 }
+		 //stage('Set Terraform path') {
+		//	 steps {
+		//		 script {
+		//		 def tfHome = tool name: 'Terraform'
+		//		 env.PATH = "${tfHome}:${env.PATH}"
+		//		 }
+		//		sh 'terraform -version'
+		//	 }
+		 //}
 		 
 		 stage('Provision infrastructure') {
 			 steps {
 				 dir('dev')
 				 {
 				 sh 'cp ./../test.tf .'
-				 sh 'terraform init'
-				 sh 'terraform plan -out=plan'
+			         sh 'cp ./../Dockerfile .'
+				 sh 'docker build -t subbu/tf-test --build-arg TAG=tmp --build-arg AWS_ACCESS_KEY_ID=test1 --build-arg AWS_SECRET_ACCESS_KEY=test2 .'
+				 //sh 'terraform plan -out=plan'
 				 // sh ‘terraform destroy -auto-approve'
-				 sh 'terraform apply plan'
+				 //sh 'terraform apply plan'
 				 }
 			 }
 		 }
