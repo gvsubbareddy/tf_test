@@ -1,5 +1,5 @@
 pipeline {
-	 agent any
+	 agent { dockerfile true }
 	 
 	 stages {
 		 stage('checkout') {
@@ -9,14 +9,14 @@ pipeline {
 			 
 			 }
 		 }
-		  agent {
-                         dockerfile {
+		  //agent {
+                    //     dockerfile {
                          //additionalBuildArgs "--build-arg 'http_proxy=${env.http_proxy}' --build-arg 'https_proxy=${env.https_proxy}'"
-                         additionalBuildArgs "--build-arg 'TAG=tmp' --build-arg 'AWS_ACCESS_KEY_ID=test1' --build-arg 'AWS_SECRET_ACCESS_KEY=test2'"
-                         filename 'Dockerfile'
-                         args '-u root:root'
-                        }
-                   }
+                      //   additionalBuildArgs "--build-arg 'TAG=tmp' --build-arg 'AWS_ACCESS_KEY_ID=test1' --build-arg 'AWS_SECRET_ACCESS_KEY=test2'"
+                       //  filename 'Dockerfile'
+                        // args '-u root:root'
+                        //}
+                   //}
 		 //stage('Set Terraform path') {
 		//	 steps {
 		//		 script {
