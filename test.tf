@@ -1,6 +1,18 @@
+variable "accessKey" {
+  type        = "string"
+  description = "AWS access key id"
+  default = "missing"
+}
+
+variable "secretKey" {
+  type        = "string"
+  description = "AWS access secret key"
+  default = "missing"
+}
+
 provider "aws" {
-  access_key = "${env.AWS_ACCESS_KEY_ID}"
-  secret_key = "${env.AWS_SECRET_ACCESS_KEY}"
+  access_key = "${var.accessKey}"
+  secret_key = "${var.secretKey}"
   region     = "us-east-2"
 }
 
