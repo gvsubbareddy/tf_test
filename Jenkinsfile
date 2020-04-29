@@ -3,7 +3,8 @@ pipeline {
 	    dockerfile {
 		   filename 'Dockerfile'
 		   reuseNode false
-		   args "--TAG tmp --AWS_ACCESS_KEY_ID=test1 --AWS_SECRET_ACCESS_KEY=test2"
+		   //args "--TAG tmp --AWS_ACCESS_KEY_ID=test1 --AWS_SECRET_ACCESS_KEY=test2"
+		   additionalBuildArgs "--build-arg 'TAG=tmp' --build-arg 'AWS_ACCESS_KEY_ID=test1' --build-arg 'AWS_SECRET_ACCESS_KEY=test2'"
         }		
 	}
 	 
