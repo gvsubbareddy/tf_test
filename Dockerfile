@@ -25,7 +25,7 @@ RUN echo $TAG
 COPY ./abc /$env_var_name/
 RUN echo $env_var_name
 
-COPY ./abc /$TAG/
+#COPY ./abc /$TAG/
 COPY ./test.tf /$TAG/
 WORKDIR /tmp/
 RUN echo "hello"
