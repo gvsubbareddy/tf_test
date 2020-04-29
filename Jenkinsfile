@@ -3,6 +3,8 @@ pipeline {
 	    dockerfile {
 		   filename 'Dockerfile'
 		   reuseNode false
+		   label 'docker_sushil'
+           args "--TAG tmp"
         }		
 	}
 	 
