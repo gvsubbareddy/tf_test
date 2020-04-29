@@ -3,8 +3,7 @@ pipeline {
 	    dockerfile {
 		   filename 'Dockerfile'
 		   reuseNode false
-		   label 'docker_sushil'
-           args "--TAG tmp"
+		   args "--TAG tmp --AWS_ACCESS_KEY_ID=test1 --AWS_SECRET_ACCESS_KEY=test2"
         }		
 	}
 	 
