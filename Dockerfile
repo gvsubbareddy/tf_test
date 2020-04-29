@@ -19,7 +19,7 @@ RUN wget --quiet https://releases.hashicorp.com/terraform/0.11.3/terraform_0.11.
   && mv terraform /usr/bin \
   && rm terraform_0.11.3_linux_amd64.zip
 
-COPY ./abc /$TAG/
+#COPY ./abc /$TAG/
 RUN echo $TAG
 
 #COPY ./abc /$env_var_name/
