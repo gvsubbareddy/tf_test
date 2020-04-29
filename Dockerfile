@@ -22,7 +22,7 @@ RUN wget --quiet https://releases.hashicorp.com/terraform/0.11.3/terraform_0.11.
 COPY ./abc /$TAG/
 RUN echo $TAG
 
-COPY ./abc /$env_var_name/
+#COPY ./abc /$env_var_name/
 RUN echo $env_var_name
 
 #COPY ./abc /$TAG/
